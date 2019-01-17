@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="gradle-docker-plugin-4.3.0-javadoc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/gradle-docker-plugin-4.3.0-javadoc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$PROJECT_DIR$/lib/gradle-docker-plugin-4.3.0-javadoc.jar!/" recursive="false" />
+  </library>
+</component>

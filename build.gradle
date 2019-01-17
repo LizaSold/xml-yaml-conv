@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+        dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
+    }
+}
+
+plugins {
+    id "java"
+    id "idea"
+    id "org.springframework.boot" version "2.1.1.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "com.palantir.docker" version "0.20.1"
+}
+
+repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+group 'com.eliza'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    baseName = 'xmlyamlconv'
+    version = '1.0-SNAPSHOT'
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
+}
+
+
+dependencies {
+
+    // Serialization
+    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
+    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
+    compile("com.github.DinoChiesa:deserialize-xml-arrays-jackson:master")
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    
+
+    // Testing
+    testCompile("junit:junit:4.12")
+    testCompile("commons-io:commons-io:2.6")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
