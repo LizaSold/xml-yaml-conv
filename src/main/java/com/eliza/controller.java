@@ -19,10 +19,17 @@ public class controller {
 
     private service service;
 
+    /**
+     * @param service
+     */
     public controller(service service) {
         this.service = service;
     }
 
+    /**
+     * @param xml
+     * @return
+     */
     @PostMapping(
             value = "/convert",
             consumes = "text/xml",

@@ -49,6 +49,11 @@ docker {
     buildArgs(['DEPENDENCY': "dependency"])
 }
 
+task createJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+    destinationDir = file("${rootDir}/javadoc")
+}
+
 
 dependencies {
 
@@ -58,8 +63,6 @@ dependencies {
     compile("com.github.DinoChiesa:deserialize-xml-arrays-jackson:master")
 
     implementation('org.springframework.boot:spring-boot-starter-web')
-
-    
 
     // Testing
     testCompile("junit:junit:4.12")

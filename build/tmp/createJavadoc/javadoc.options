@@ -1,0 +1,7 @@
+-d '/home/eliza/IdeaProjects/xml-yaml-conv/javadoc'
+-doctitle 'xml-yaml-conv API'
+-quiet 
+-windowtitle 'xml-yaml-conv API'
+'/home/eliza/IdeaProjects/xml-yaml-conv/src/main/java/com/eliza/service.java'
+'/home/eliza/IdeaProjects/xml-yaml-conv/src/main/java/com/eliza/xmlyamlconv.java'
+'/home/eliza/IdeaProjects/xml-yaml-conv/src/main/java/com/eliza/controller.java'

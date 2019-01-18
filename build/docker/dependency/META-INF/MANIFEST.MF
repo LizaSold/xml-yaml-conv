@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Start-Class: com.eliza.xmlyamlconv
-Main-Class: org.springframework.boot.loader.JarLauncher
-

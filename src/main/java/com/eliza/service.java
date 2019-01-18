@@ -20,6 +20,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import com.google.xmldeser.ArrayInferringUntypedObjectDeserializer;
 import com.google.xmldeser.RootSniffingXMLStreamReader;
 
+
 @Service
 public class service {
 
@@ -38,6 +39,12 @@ public class service {
 
     //convert xml to map
 
+    /**
+     * @param xml
+     * @return
+     * @throws IOException
+     * @throws XMLStreamException
+     */
     public Map<String, Object> xmlToMap(String xml) throws IOException, XMLStreamException {
         InputStream stream = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
         // create XML deserializer using DinoCheisa
@@ -52,6 +59,11 @@ public class service {
 
     //convert map to yaml
 
+    /**
+     * @param data
+     * @return
+     * @throws IOException
+     */
     public String mapToYaml(Map<String, Object> data) throws IOException {
         StringWriter stringWriter = new StringWriter();
         yamlMapper.writeValue(stringWriter, data);
